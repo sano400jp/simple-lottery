@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Code:</strong>
+  <%= @lottery.code %>
+</p>
+
+<p>
+  <strong>Owner code:</strong>
+  <%= @lottery.owner_code %>
+</p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @lottery.title %>
+</p>
+
+<p>
+  <strong>Draw time:</strong>
+  <%= @lottery.draw_time %>
+</p>
+
+<p>
+  <strong>Redraw range:</strong>
+  <%= @lottery.redraw_range %>
+</p>
+
+<p>
+  <strong>Nonres redraw:</strong>
+  <%= @lottery.nonres_redraw %>
+</p>
+
+<p>
+  <strong>End time:</strong>
+  <%= @lottery.end_time %>
+</p>
+
+<%= link_to 'Edit', edit_lottery_path(@lottery) %> |
+<%= link_to 'Back', lotteries_path %>

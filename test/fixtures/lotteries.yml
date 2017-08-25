@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  owner_code: MyString
+  title: MyString
+  draw_time: 2017-08-25 04:09:24
+  redraw_range: 1
+  nonres_redraw: false
+  end_time: 2017-08-25 04:09:24
+
+two:
+  code: MyString
+  owner_code: MyString
+  title: MyString
+  draw_time: 2017-08-25 04:09:24
+  redraw_range: 1
+  nonres_redraw: false
+  end_time: 2017-08-25 04:09:24

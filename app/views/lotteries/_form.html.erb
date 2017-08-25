@@ -1,0 +1,45 @@
+<%= form_for(@lottery) do |f| %>
+  <% if @lottery.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@lottery.errors.count, "error") %> prohibited this lottery from being saved:</h2>
+
+      <ul>
+      <% @lottery.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :code %><br>
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :owner_code %><br>
+    <%= f.text_field :owner_code %>
+  </div>
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :draw_time %><br>
+    <%= f.datetime_select :draw_time %>
+  </div>
+  <div class="field">
+    <%= f.label :redraw_range %><br>
+    <%= f.number_field :redraw_range %>
+  </div>
+  <div class="field">
+    <%= f.label :nonres_redraw %><br>
+    <%= f.check_box :nonres_redraw %>
+  </div>
+  <div class="field">
+    <%= f.label :end_time %><br>
+    <%= f.datetime_select :end_time %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

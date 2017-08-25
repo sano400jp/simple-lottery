@@ -1,0 +1,2 @@
+rails generate scaffold Lottery code:string owner_code:string title:string draw_time:datetime redraw_range:integer nonres_redraw:boolean end_time:datetime
+rails generate scaffold Owner code:string password_digest:string
