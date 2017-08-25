@@ -26,6 +26,8 @@ class LotteriesController < ApplicationController
   # POST /lotteries.json
   def create
     @lottery = Lottery.new(lottery_params)
+    @lottery.owner_code = session[:owner_code]
+    @lottery.code = Digest::SHA1.hexdigest(@lottery.owner_code + @lottery.title)
 
     respond_to do |format|
       if @lottery.save
