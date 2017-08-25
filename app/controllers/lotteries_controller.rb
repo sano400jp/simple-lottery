@@ -15,6 +15,7 @@ class LotteriesController < ApplicationController
   # GET /lotteries/new
   def new
     @lottery = Lottery.new
+    @lottery.owner_code = session[:owner_code]
   end
 
   # GET /lotteries/1/edit
