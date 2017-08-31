@@ -27,12 +27,12 @@ class LotteriesController < ApplicationController
   def create
     @lottery = Lottery.new(lottery_params)
     @lottery.owner_code = session[:owner_code]
-    @lottery.code = Digest::SHA1.hexdigest(@lottery.owner_code + @lottery.title)
+    @lottery.code = Digest::SHA1.hexdigest(@lottery.owner_code + @lottery.title + Time.now.strftime("%Y%m%M%H%d%S"))
 
     respond_to do |format|
       if @lottery.save
-        format.html { redirect_to @lottery, notice: 'Lottery was successfully created.' }
-        format.json { render :show, status: :created, location: @lottery }
+        format.html { redirect_to edit_lottery_path(@lottery) }
+#        format.json { render :show, status: :created, location: @lottery }
       else
         format.html { render :new }
         format.json { render json: @lottery.errors, status: :unprocessable_entity }
