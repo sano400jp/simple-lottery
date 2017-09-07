@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Lottery code:</strong>
+  <%= @gift.lottery_code %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @gift.name %>
+</p>
+
+<p>
+  <strong>Start cnt:</strong>
+  <%= @gift.start_cnt %>
+</p>
+
+<p>
+  <strong>Delived cnt:</strong>
+  <%= @gift.delived_cnt %>
+</p>
+
+<p>
+  <strong>Image l url:</strong>
+  <%= @gift.image_l_url %>
+</p>
+
+<p>
+  <strong>Image m url:</strong>
+  <%= @gift.image_m_url %>
+</p>
+
+<p>
+  <strong>Image s url:</strong>
+  <%= @gift.image_s_url %>
+</p>
+
+<%= link_to 'Edit', edit_gift_path(@gift) %> |
+<%= link_to 'Back', gifts_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Gifts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Lottery code</th>
+      <th>Name</th>
+      <th>Start cnt</th>
+      <th>Delived cnt</th>
+      <th>Image l url</th>
+      <th>Image m url</th>
+      <th>Image s url</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @gifts.each do |gift| %>
+      <tr>
+        <td><%= gift.lottery_code %></td>
+        <td><%= gift.name %></td>
+        <td><%= gift.start_cnt %></td>
+        <td><%= gift.delived_cnt %></td>
+        <td><%= gift.image_l_url %></td>
+        <td><%= gift.image_m_url %></td>
+        <td><%= gift.image_s_url %></td>
+        <td><%= link_to 'Show', gift %></td>
+        <td><%= link_to 'Edit', edit_gift_path(gift) %></td>
+        <td><%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Gift', new_gift_path %>

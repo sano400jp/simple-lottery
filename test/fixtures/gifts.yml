@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lottery_code: MyString
+  name: MyString
+  start_cnt: 1
+  delived_cnt: 1
+  image_l_url: MyString
+  image_m_url: MyString
+  image_s_url: MyString
+
+two:
+  lottery_code: MyString
+  name: MyString
+  start_cnt: 1
+  delived_cnt: 1
+  image_l_url: MyString
+  image_m_url: MyString
+  image_s_url: MyString

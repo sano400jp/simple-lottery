@@ -2,5 +2,7 @@
 
 <%= render 'form_home' %>
 
+<%= link_to 'Gifts', gifts_path(@lottery.code) %><br>
+
 <%= link_to 'Show', @lottery %> |
 <%= link_to 'Back', lotteries_path %>

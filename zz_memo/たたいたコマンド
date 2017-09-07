@@ -1,3 +1,4 @@
 rails generate scaffold Lottery code:string owner_code:string title:string draw_time:datetime redraw_range:integer nonres_redraw:boolean end_time:datetime
 rails generate scaffold Owner code:string password_digest:string
 rails generate controller Pages top
+rails generate scaffold Gift lottery_code:string name:string start_cnt:integer delived_cnt:integer image_l_url:string image_m_url:string image_s_url:string
