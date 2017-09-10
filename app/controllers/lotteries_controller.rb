@@ -67,7 +67,7 @@ class LotteriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lottery
-      @lottery = Lottery.find(params[:id])
+      @lottery = Lottery.find_by(code: params[:code])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
