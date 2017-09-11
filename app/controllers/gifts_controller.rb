@@ -6,6 +6,7 @@ class GiftsController < ApplicationController
   def index
     @lottery_code = params[:format]
     @gifts = Gift.where(lottery_code: params[:format])
+    # @gifts = Gift.all
   end
 
   # GET /gifts/1

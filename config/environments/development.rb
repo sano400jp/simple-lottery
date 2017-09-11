@@ -38,4 +38,10 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+
+# 以下のエラー対応
+# Cannot render console from 114.183.184.103! Allowed networks: 127.0.0.1, ::1, 127.0.0.0/127.255.255.255
+config.web_console.whitelisted_ips = '0.0.0.0/0'
+
 end

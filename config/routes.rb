@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'pages#top'
 
-  get '/gifts/:lottery_code', to:'gifts#index', as: 'gift_edit_page'
+  get '/lotteries', to:'lotteries#show'
 
   resources :owners
   resources :lotteries, param: :code
