@@ -27,6 +27,7 @@ class GiftsController < ApplicationController
   # POST /gifts.json
   def create
     @gift = Gift.new(gift_params)
+    @gift.lottery_code = session[:lottery_code]
 
     respond_to do |format|
       if @gift.save
