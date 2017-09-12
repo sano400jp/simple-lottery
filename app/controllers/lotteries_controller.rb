@@ -33,6 +33,7 @@ class LotteriesController < ApplicationController
       if @lottery.save
         format.html { redirect_to edit_lottery_path(@lottery) }
 #        format.json { render :show, status: :created, location: @lottery }
+        session[:lottery_code] = @lottery.code
       else
         format.html { render :new }
         format.json { render json: @lottery.errors, status: :unprocessable_entity }

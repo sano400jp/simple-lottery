@@ -4,8 +4,8 @@ class GiftsController < ApplicationController
   # GET /gifts
   # GET /gifts.json
   def index
-    @lottery_code = params[:format]
-    @gifts = Gift.where(lottery_code: params[:format])
+    @lottery_code = session[:lottery_code]
+    @gifts = Gift.where(lottery_code: @lottery_code)
     # @gifts = Gift.all
   end
 
