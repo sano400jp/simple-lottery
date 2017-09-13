@@ -2,18 +2,18 @@
 
 one:
   lottery_code: MyString
+  seq: 1
   name: MyString
   start_cnt: 1
-  delived_cnt: 1
   image_l_url: MyString
   image_m_url: MyString
   image_s_url: MyString
 
 two:
   lottery_code: MyString
+  seq: 1
   name: MyString
   start_cnt: 1
-  delived_cnt: 1
   image_l_url: MyString
   image_m_url: MyString
   image_s_url: MyString

@@ -6,9 +6,9 @@
   <thead>
     <tr>
       <th>Lottery code</th>
+      <th>seq</th>
       <th>Name</th>
       <th>Start cnt</th>
-      <th>Delived cnt</th>
       <th>Image l url</th>
       <th>Image m url</th>
       <th>Image s url</th>
@@ -20,9 +20,9 @@
     <% @gifts.each do |gift| %>
       <tr>
         <td><%= gift.lottery_code %></td>
+        <td><%= gift.seq %></td>
         <td><%= gift.name %></td>
         <td><%= gift.start_cnt %></td>
-        <td><%= gift.delived_cnt %></td>
         <td><%= gift.image_l_url %></td>
         <td><%= gift.image_m_url %></td>
         <td><%= gift.image_s_url %></td>

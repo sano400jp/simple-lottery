@@ -2,3 +2,6 @@ rails generate scaffold Lottery code:string owner_code:string title:string draw_
 rails generate scaffold Owner code:string password_digest:string
 rails generate controller Pages top
 rails generate scaffold Gift lottery_code:string name:string start_cnt:integer delived_cnt:integer image_l_url:string image_m_url:string image_s_url:string
+# モデルの作り直し
+rails destroy model Gift
+rails generate model Gift lottery_code:string seq:integer name:string start_cnt:integer image_l_url:string image_m_url:string image_s_url:string

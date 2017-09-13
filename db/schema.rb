@@ -11,13 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170904071304) do
+ActiveRecord::Schema.define(version: 20170913072723) do
 
   create_table "gifts", force: :cascade do |t|
     t.string   "lottery_code"
+    t.integer  "seq"
     t.string   "name"
     t.integer  "start_cnt"
-    t.integer  "delived_cnt"
     t.string   "image_l_url"
     t.string   "image_m_url"
     t.string   "image_s_url"
