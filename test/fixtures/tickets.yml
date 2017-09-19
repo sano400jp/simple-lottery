@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lottery_code: MyString
+  seq: 1
+  token: MyString
+  gift_seq: 1
+  act_flg: false
+  status: MyString
+
+two:
+  lottery_code: MyString
+  seq: 1
+  token: MyString
+  gift_seq: 1
+  act_flg: false
+  status: MyString

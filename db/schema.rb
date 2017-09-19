@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170913072723) do
+ActiveRecord::Schema.define(version: 20170919071202) do
 
   create_table "gifts", force: :cascade do |t|
     t.string   "lottery_code"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 20170913072723) do
     t.string   "password_digest"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+  end
+
+  create_table "tickets", force: :cascade do |t|
+    t.string   "lottery_code"
+    t.integer  "seq"
+    t.string   "token"
+    t.integer  "gift_seq",     default: 0
+    t.boolean  "act_flg",      default: true
+    t.string   "status",       default: "0"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
   end
 
 end

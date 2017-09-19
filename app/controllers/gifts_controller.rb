@@ -26,8 +26,15 @@ class GiftsController < ApplicationController
   # POST /gifts
   # POST /gifts.json
   def create
+    lottery_code = session[:lottery_code]
+    max_seq = Gift.where(lottery_code: lottery_code).maximum(:seq)
+    if max_seq.nil?
+      max_seq = 0
+    end
+
     @gift = Gift.new(gift_params)
-    @gift.lottery_code = session[:lottery_code]
+    @gift.lottery_code = lottery_code
+    @gift.seq = max_seq + 1
 
     respond_to do |format|
       if @gift.save

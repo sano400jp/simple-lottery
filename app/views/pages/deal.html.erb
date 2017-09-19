@@ -1,0 +1,8 @@
+Ticket count : <br>
+<%= form_tag(create_tickets_path) do |f| %>
+  <div class="field">
+    <%= label_tag 'name' ,'Create cnt' %><br>
+    <%= number_field_tag 'create_cnt' %>
+  </div>
+<% end %>
+<%= link_to 'Ticket list', '#' %>
