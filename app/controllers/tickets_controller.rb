@@ -2,13 +2,30 @@ class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   def deal
-    @create_cnt = params['create_cnt']
+    @deal_cnt = params['deal_cnt'].to_i
+    lottery_code = session[:lottery_code]
+    # seqの最大値を取得
+    max_seq = Ticket.where(lottery_code: lottery_code).maximum(:seq)
+    if max_seq.nil?
+      max_seq = 0
+    end
+    # 繰り返し登録処理実行
+    @deal_cnt.times do
+      # 登録値設定
+      max_seq = max_seq + 1
+      new_ticket = Ticket.new
+      new_ticket.lottery_code = lottery_code
+      new_ticket.seq = max_seq
+      if new_ticket.save
+      else
+      end
+    end
   end
 
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    @tickets = Ticket.where(lottery_code: session[:lottery_code])
   end
 
   # GET /tickets/1
