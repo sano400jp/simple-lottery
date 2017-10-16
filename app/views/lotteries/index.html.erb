@@ -23,9 +23,11 @@
         <td><%= lottery.owner_code %></td>
         <td><%= lottery.title %></td>
         <td><%= lottery.draw_time %></td>
+<% if false %>
         <td><%= lottery.redraw_range %></td>
         <td><%= lottery.nonres_redraw %></td>
         <td><%= lottery.end_time %></td>
+<% end %>
         <td><%= link_to 'Show', lottery %></td>
         <td><%= link_to 'Edit', edit_lottery_path(lottery) %></td>
         <td><%= link_to 'Destroy', lottery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
