@@ -1,3 +1,5 @@
+require "securerandom"
+
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
@@ -11,11 +13,27 @@ class TicketsController < ApplicationController
     end
     # 繰り返し登録処理実行
     @deal_cnt.times do
-      # 登録値設定
+      ### 登録値設定
       max_seq = max_seq + 1
       new_ticket = Ticket.new
       new_ticket.lottery_code = lottery_code
       new_ticket.seq = max_seq
+      # new_ticket.token = Digest::SHA1.hexdigest(lottery_code + max_seq.to_s) #ほんとはもっと短い文字列にしたい
+      # テーブルを検索して結果が0になるまで繰り返し実行
+      strToken = ""
+      iStop = 0
+      loop{
+        iStop = iStop + 1
+        strToken = SecureRandom.hex(4)
+        if Ticket.where(lottery_code: lottery_code, token: strToken).blank?
+          break
+        end
+        if iStop > 100 then
+          strToken = "hoge"
+          break
+        end
+      }
+      new_ticket.token = strToken
       if new_ticket.save
       else
       end
