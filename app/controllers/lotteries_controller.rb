@@ -41,6 +41,12 @@ class LotteriesController < ApplicationController
     end
   end
 
+  ### 抽選実行ボタン
+  def draw
+    # 抽選実行処理起動（本体はヘルパー使うべきか？）
+    run_draw
+  end
+
   # PATCH/PUT /lotteries/1
   # PATCH/PUT /lotteries/1.json
   def update
