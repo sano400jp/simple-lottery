@@ -47,6 +47,32 @@ class LotteriesController < ApplicationController
     run_draw
   end
 
+  def run_draw
+    # Giftsからコードと個数
+    # giftsList = Gift.find_by(lottery_code: session[:lottery_code])
+
+    # Gifts毎繰り返し
+    Gift.where(lottery_code: session[:lottery_code]).find_each do |gift|
+      seq = gift.seq
+      cnt = gift.start_cnt
+
+      # 景品の残り個数を取得
+      rem_cnt = cnt - Ticket.where(lottery_code: session[:lottery_code], gift_seq: seq).count
+
+      # ランダムで配列のindexを選ぶ
+      winningTickets = Ticket.where(lottery_code: session[:lottery_code], status: "1").order("RANDOM()").limit(rem_cnt)
+
+      if winningTickets.count == 0 then
+      else
+        # 当選配列のTickets.gift_seq（項目名後悔中。gift_codeにすべきだったか、、、）を更新
+        winningTickets.each do |wt|
+          wt.gift_seq = seq
+        end
+        winningTickets.update_all("gift_seq = " + seq.to_s + ", status = '2'")
+      end
+    end
+  end
+  
   # PATCH/PUT /lotteries/1
   # PATCH/PUT /lotteries/1.json
   def update
