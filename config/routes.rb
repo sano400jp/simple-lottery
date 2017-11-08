@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   ### 開発用画面 ###
   # キャッシュをいじる
-  # https://simple-lottery-sano400jp.c9users.io/cacheedit
+  # https://simple-lottery-sano400jp.c9users.io/devpages/cacheedit
   get  'devpages/cacheedit', to:'devpages#cacheedit'
   get  'devpages/setcache', to:'devpages#setcache'
 

@@ -1,3 +1,13 @@
-<%= @cachestr_owner_code %><br>
-<%= @cachestr_lottery_code %>
+owner_code  :<%= @cachestr_owner_code %><br>
+lottery_code:<%= @cachestr_lottery_code %><br>
 
+hogehoge<br>
+<br>
+[ Cache Setting ] -------------<br>
+<%= form_tag("/devpages/setcache", method: "get") do %>
+    <%= label_tag("Owner Code:") %><br>
+    <%= text_field_tag("owner_code") %><br>
+    <%= label_tag("Lottery Code:") %><br>
+    <%= text_field_tag("lottery_code") %><br>
+    <%= submit_tag("Set") %>
+<% end %>
