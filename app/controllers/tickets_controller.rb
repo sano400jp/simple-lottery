@@ -1,5 +1,6 @@
 require "securerandom"
-
+require "rubygems"
+require "rqrcode"
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
@@ -38,6 +39,10 @@ class TicketsController < ApplicationController
       else
       end
     end
+  end
+
+  def quick_deal
+    
   end
 
   # GET /tickets
