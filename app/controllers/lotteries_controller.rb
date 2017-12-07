@@ -1,3 +1,5 @@
+require "securerandom"
+
 class LotteriesController < ApplicationController
   before_action :set_lottery, only: [:show, :edit, :update, :destroy]
 
@@ -27,7 +29,38 @@ class LotteriesController < ApplicationController
   def create
     @lottery = Lottery.new(lottery_params)
     @lottery.owner_code = session[:owner_code]
-    @lottery.code = Digest::SHA1.hexdigest(@lottery.owner_code + @lottery.title + Time.now.strftime("%Y%m%M%H%d%S"))
+
+    # lottery_codeの作成
+    strToken = ""
+    iStop = 0
+    loop{
+      iStop = iStop + 1
+      strToken = SecureRandom.hex(20)
+      if Lottery.where(code: strToken).blank?
+        break
+      end
+      if iStop > 100 then
+        strToken = "hoge"
+        break
+      end
+    }
+    @lottery.code = strToken
+
+    # gest_codeの作成
+    strToken = ""
+    iStop = 0
+    loop{
+      iStop = iStop + 1
+      strToken = SecureRandom.hex(10)
+      if Lottery.where(gest_code: strToken).blank?
+        break
+      end
+      if iStop > 100 then
+        strToken = "hoge"
+        break
+      end
+    }
+    @lottery.gest_code = strToken
 
     respond_to do |format|
       if @lottery.save
