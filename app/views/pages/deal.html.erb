@@ -1,4 +1,5 @@
 Ticket count : <%= @dealed_cnt %><br>
+<%= link_to 'Quick deal', q_deal_tickets_path %><br>
 <%= form_tag(deal_tickets_path) do |f| %>
     <%= label_tag 'name' ,'Deal cnt' %><br>
     <%= number_field_tag 'deal_cnt' %>
