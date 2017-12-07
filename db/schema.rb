@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170919071202) do
+ActiveRecord::Schema.define(version: 20171119072627) do
 
   create_table "gifts", force: :cascade do |t|
     t.string   "lottery_code"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20170919071202) do
     t.datetime "end_time"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.string   "gest_code"
   end
 
   create_table "owners", force: :cascade do |t|
