@@ -19,7 +19,6 @@ class TicketsController < ApplicationController
       new_ticket = Ticket.new
       new_ticket.lottery_code = lottery_code
       new_ticket.seq = max_seq
-      # new_ticket.token = Digest::SHA1.hexdigest(lottery_code + max_seq.to_s) #ほんとはもっと短い文字列にしたい
       # テーブルを検索して結果が0になるまで繰り返し実行
       strToken = ""
       iStop = 0
