@@ -5,3 +5,6 @@ rails generate scaffold Gift lottery_code:string name:string start_cnt:integer d
 # モデルの作り直し
 rails destroy model Gift
 rails generate model Gift lottery_code:string seq:integer name:string start_cnt:integer image_l_url:string image_m_url:string image_s_url:string
+
+
+hoge
