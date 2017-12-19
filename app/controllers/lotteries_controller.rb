@@ -138,6 +138,6 @@ class LotteriesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def lottery_params
-      params.require(:lottery).permit(:code, :owner_code, :title, :draw_time, :redraw_range, :nonres_redraw, :end_time)
+      params.require(:lottery).permit(:code, :owner_code, :title, :draw_time, :redraw_range, :nonres_redraw, :end_time, :gest_code)
     end
 end
