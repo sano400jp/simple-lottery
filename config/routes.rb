@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'guest/open_lottery'
+
+  get 'guest/result'
+
   root 'pages#top'
 
   get '/lotteries', to:'lotteries#show'
