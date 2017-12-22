@@ -41,7 +41,6 @@ class TicketsController < ApplicationController
   end
 
   def quick_deal
-    @url_str = "https://hogehoge"
 
     lottery_code = session[:lottery_code]
     ### レコード取得
@@ -54,11 +53,12 @@ class TicketsController < ApplicationController
 
     ### くじ情報取得
     rec_lottery = Lottery.find_by(code: lottery_code)
-    gest_code = rec_lottery.gest_code
+    guest_code = rec_lottery.guest_code
 
     ### 登録値設定
     new_ticket = Ticket.new
     new_ticket.lottery_code = lottery_code
+    new_ticket.guest_code = guest_code
     new_ticket.seq = max_seq
 
     # 一意のトークンを生成（テーブルを検索して結果が0になるまで繰り返し実行）
@@ -81,7 +81,7 @@ class TicketsController < ApplicationController
     end
 
     # チケットのURLを作成
-    @url_str = "https://simple-lottery-sano400jp.c9users.io/gests" << gest_code << "/" << strToken
+    @url_str = "https://simple-lottery-sano400jp.c9users.io/guest/" << guest_code << "/" << strToken
   end
 
   # GET /tickets

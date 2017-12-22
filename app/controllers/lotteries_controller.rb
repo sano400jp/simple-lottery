@@ -46,21 +46,21 @@ class LotteriesController < ApplicationController
     }
     @lottery.code = strToken
 
-    # gest_codeの作成
-    strToken = ""
+    # guest_codeの作成
+    str_guest_code = "huga"
     iStop = 0
     loop{
       iStop = iStop + 1
-      strToken = SecureRandom.hex(10)
-      if Lottery.where(gest_code: strToken).blank?
+      str_guest_code = SecureRandom.hex(10)
+      if Lottery.where(guest_code: str_guest_code).blank?
         break
       end
       if iStop > 100 then
-        strToken = "hoge"
+        str_guest_code = "hoge"
         break
       end
     }
-    @lottery.gest_code = strToken
+    @lottery.guest_code = str_guest_code
 
     respond_to do |format|
       if @lottery.save
