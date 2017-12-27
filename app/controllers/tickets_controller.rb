@@ -81,7 +81,7 @@ class TicketsController < ApplicationController
     end
 
     # チケットのURLを作成
-    @url_str = "https://simple-lottery-sano400jp.c9users.io/guest/" << guest_code << "/" << strToken
+    @url_str = "https://simple-lottery-sano400jp.c9users.io/entry/" << guest_code << "/" << strToken
   end
 
   # GET /tickets

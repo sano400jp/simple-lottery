@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   post '/deal_tickets'   , to: 'tickets#deal'
 
   # ゲスト画面
-  get '/guest/:guest_code/:token' , to: 'guest#open_lottery'
+  get '/entry/:guest_code/:token' , to: 'guest#entry'
+  get '/guest/:guest_code/:token' , to: 'guest#open_lottery' , as: :guest
   get '/guest/result'             , to: 'guest#result'
 
   resources :owners

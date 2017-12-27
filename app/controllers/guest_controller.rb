@@ -1,4 +1,9 @@
 class GuestController < ApplicationController
+  def entry
+    @guest_code = params[:guest_code]
+    @token = params[:token]
+  end
+
   def open_lottery
     guest_code = params[:guest_code]
     token = params[:token]
