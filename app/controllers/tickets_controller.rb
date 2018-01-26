@@ -4,20 +4,28 @@ require "rqrcode"
 class TicketsController < ApplicationController
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
+#############################################
   def deal
     @deal_cnt = params['deal_cnt'].to_i
     lottery_code = session[:lottery_code]
+
     # seqの最大値を取得
     max_seq = Ticket.where(lottery_code: lottery_code).maximum(:seq)
     if max_seq.nil?
       max_seq = 0
     end
+
+    ### くじ情報取得
+    rec_lottery = Lottery.find_by(code: lottery_code)
+    guest_code = rec_lottery.guest_code
+
     # 繰り返し登録処理実行
     @deal_cnt.times do
       ### 登録値設定
       max_seq = max_seq + 1
       new_ticket = Ticket.new
       new_ticket.lottery_code = lottery_code
+      new_ticket.guest_code = guest_code
       new_ticket.seq = max_seq
       # テーブルを検索して結果が0になるまで繰り返し実行
       strToken = ""
@@ -40,6 +48,7 @@ class TicketsController < ApplicationController
     end
   end
 
+#############################################
   def quick_deal
 
     lottery_code = session[:lottery_code]
@@ -84,26 +93,32 @@ class TicketsController < ApplicationController
     @url_str = "https://simple-lottery-sano400jp.c9users.io/entry/" << guest_code << "/" << strToken
   end
 
+#############################################
   # GET /tickets
   # GET /tickets.json
   def index
     @tickets = Ticket.where(lottery_code: session[:lottery_code])
   end
 
+#############################################
   # GET /tickets/1
   # GET /tickets/1.json
   def show
+    @url_str = "https://simple-lottery-sano400jp.c9users.io/entry/" << @ticket.guest_code << "/" << @ticket.token
   end
 
+#############################################
   # GET /tickets/new
   def new
     @ticket = Ticket.new
   end
 
+#############################################
   # GET /tickets/1/edit
   def edit
   end
 
+#############################################
   # POST /tickets
   # POST /tickets.json
   def create
@@ -120,6 +135,7 @@ class TicketsController < ApplicationController
     end
   end
 
+#############################################
   # PATCH/PUT /tickets/1
   # PATCH/PUT /tickets/1.json
   def update
@@ -134,6 +150,7 @@ class TicketsController < ApplicationController
     end
   end
 
+#############################################
   # DELETE /tickets/1
   # DELETE /tickets/1.json
   def destroy
@@ -144,6 +161,7 @@ class TicketsController < ApplicationController
     end
   end
 
+#############################################
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_ticket
@@ -152,6 +170,6 @@ class TicketsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ticket_params
-      params.require(:ticket).permit(:lottery_code, :seq, :token, :gift_seq, :act_flg, :status)
+      params.require(:ticket).permit(:lottery_code, :seq, :token, :gift_seq, :act_flg, :status, :guest_code)
     end
 end
