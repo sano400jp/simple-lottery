@@ -11,26 +11,29 @@ class GuestController < ApplicationController
     session[:ticket_token] = token
     session[:guest_code] = guest_code
 
+    # ステータス更新 0→1
+    Ticket.where(:token => token, :guest_code => guest_code, :status => "0").update_all(:status => "1")
+
     # チケット情報取得
     @ticket = Ticket.find_by(guest_code: guest_code, token: token)
 
-    open_flg = "0"
-    msg = ""
+    @open_flg = "0"
+    @msg = ""
     case @ticket.status
-    when 0 then # 未エントリー　　　　※本来の操作でありえない
-      msg = "エントリーしてください"
-    when 1 then # エントリー済み　　　※まだ抽選されていない
-      msg = "まだ抽選されていません"
-    when 2 then # 抽選済みの場合　
-      open_flg = "1"
-    when 3 then # 停止
-      msg = "無効なチケットです"
+    when "0" then # 未エントリー　　　　※本来の操作でありえない
+      @msg = "エントリーしてください"
+    when "1" then # エントリー済み　　　※まだ抽選されていない
+      @msg = "まだ抽選されていません"
+    when "2" then # 抽選済みの場合　
+      @open_flg = "1"
+    when "3" then # 停止
+      @msg = "無効なチケットです"
     end
 
   end
 
   def result
-    ### 使う変数
+    ### 使う変数 ###
     # ▽アクティブレコード
     # @gift        # 景品情報格納用
     #

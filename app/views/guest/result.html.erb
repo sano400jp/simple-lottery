@@ -1,7 +1,7 @@
 <h1>Guest#result</h1>
 <p>Find me in app/views/guest/result.html.erb</p>
 <% if @hit_flg == "0" then %>
-  <%= "はずれｗ" %></br>
+  <%= render 'sorry' %>
 <% else %>
-  <%= "あたり：" + @gift.name %></br>
+  <%= render 'lucky' %>
 <% end %>
